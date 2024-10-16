@@ -22,14 +22,14 @@ function MyCart() {
   if (cartItems.length === 0) {
     return (
       <>
-        <div className="w-full h-full flex-1 flex justify-center items-center">
+        <div className="w-full h-full flex-1 flex justify-center items-center dark:bg-[#010B13] dark:text-[#DCDCDC]">
           <h1 className="text-2xl font-semibold">Your Cart Is Empty</h1>
         </div>
       </>
     );
   } else {
     return (
-      <div className="container mx-auto">
+      <div className="container mx-auto dark:bg-[#010B13] h-full flex-1 dark:text-[#DCDCDC]">
         <div className="grid grid-cols-1">
           {cartProducts.map((product) => (
             <CartItem key={product._id} product={product} />

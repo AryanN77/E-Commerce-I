@@ -38,6 +38,20 @@ export const login = async (req, res) => {
     }
 }
 
+export const getDetails = async (req, res) => {
+    try {
+        const { userId } = req.params;
+        const findUser = await User.findOne({ _id: userId });
+        if (!findUser) {
+            return res.status(404).json({ message: "No User Found", success: false })
+        }
+        return res.status(200).json({ name: findUser.name, email: findUser.email, balance: findUser.availableMoney })
+
+    } catch (error) {
+        return res.status(500).json({ message: `Some Error Occured: ${error}`, success: false })
+    }
+}
+
 export const verifyToken = async (req, res, next) => {
     const authHeader = req.headers.authorization;
     if (authHeader) {

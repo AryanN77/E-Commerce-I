@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/auth-context.jsx";
 function Auth() {
   return (
-    <div className="flex-1 flex justify-center items-center w-full h-full">
+    <div className="flex-1 flex justify-center items-center w-full h-full dark:text-[#DCDCDC] dark:bg-[#040f18]">
       <SignUp />
       <LogIn />
     </div>
@@ -73,7 +73,7 @@ function SignUp() {
           />
         </div>
         <button
-          className="p-3 w-[45%] shadow-md rounded-md hover:bg-slate-100"
+          className="p-3 w-[45%] shadow-md rounded-md hover:bg-slate-100 dark:bg-[#180e53]"
           type="submit"
         >
           Register
@@ -140,7 +140,7 @@ function LogIn() {
           />
         </div>
         <button
-          className="p-3 w-[45%] shadow-md rounded-md hover:bg-slate-100"
+          className="p-3 w-[45%] shadow-md rounded-md hover:bg-slate-100 dark:bg-[#180e53]"
           type="submit"
         >
           Log In

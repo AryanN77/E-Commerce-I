@@ -6,6 +6,8 @@ import Shop from "./pages/shop/Shop.jsx";
 import MyCart from "./mycart/MyCart.jsx";
 import { AuthContextProvider } from "./context/auth-context.jsx";
 import RefreshHandler from "./RefreshHandler.jsx";
+import { ThemeProvider } from "./context/theme-context.jsx";
+import User from "./pages/user/User.jsx";
 
 function App() {
   return (
@@ -13,13 +15,16 @@ function App() {
       <Router>
         <AuthContextProvider>
           <RefreshHandler />
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/auth" element={<Auth />} />
-            <Route path="/shop" element={<Shop />} />
-            <Route path="/mycart" element={<MyCart />} />
-          </Routes>
+          <ThemeProvider>
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/auth" element={<Auth />} />
+              <Route path="/shop" element={<Shop />} />
+              <Route path="/mycart" element={<MyCart />} />
+              <Route path="/user" element={<User />} />
+            </Routes>
+          </ThemeProvider>
         </AuthContextProvider>
       </Router>
     </div>
