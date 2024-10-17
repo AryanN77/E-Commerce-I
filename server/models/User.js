@@ -23,9 +23,9 @@ const userSchema = Schema({
         type: Boolean,
         default: false
     },
-    purchasedProducts: [{
-        type: Schema.Types.ObjectId, ref: "Products", default: []
-    }]
+    purchasedProducts: [[{
+        type: Schema.Types.ObjectId, ref: "Products", default: [[]]
+    }]]
 })
 
 const UserModel = model("Users", userSchema);

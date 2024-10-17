@@ -1,11 +1,28 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+import useGetToken from "../hooks/useGetToken";
 
 const initialState = {
     cartItems: [],
     cartPrice: 0
 }
 
-
+export const checkout = createAsyncThunk(
+    "cart/checkout",
+    async ({ headers }, { getState }) => {
+        const cartItems = getState().cart.cartItems;
+        const userId = localStorage.getItem("userID")
+        try {
+            const res = await axios.post(`http://localhost:8080/shop/${userId}/checkout`,
+                { cartItems }, {
+                headers
+            });
+            return res.data;
+        } catch (err) {
+            console.log(`Some Error Occured: ${err}`);
+        }
+    }
+)
 
 
 const cartSlice = createSlice({
@@ -58,6 +75,12 @@ const cartSlice = createSlice({
             }
         }
 
+    },
+    extraReducers: (builder) => {
+        builder.addCase(checkout.fulfilled, (state, action) => {
+            state.cartItems = [];
+
+        })
     }
 })
 
